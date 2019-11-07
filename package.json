@@ -7,7 +7,7 @@
     "start": "node src/server.js",
     "migrate": "postgrator --config postgrator-config.js",
     "migrate:test": "env NODE_ENV=test npm run migrate",
-    "migrate:production": "env SSL=true DATABASE_URL=$(heroku config: get postgres://brfebwbluaohdy:08d1425cecd1afafdf782fa501879757bd5e04ad5c2a92386262074e518b9d6a@ec2-50-19-95-77.compute-1.amazonaws.com:5432/debnapqhhptg4q) npm run migrate",
+    "migrate:production": "env SSL=true DATABASE_URL=$(heroku config:get DATABASE_URL) npm run migrate",
     "predeploy": "npm audit && npm run migrate:production",
     "deploy": "git push heroku master"
   },
@@ -17,7 +17,6 @@
   "description": "",
   "dependencies": {
     "cors": "^2.8.5",
-    "dotenv": "^7.0.0",
     "helmet": "^3.16.0",
     "json-server": "^0.14.0",
     "knex": "^0.16.5",
